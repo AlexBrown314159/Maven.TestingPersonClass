@@ -95,25 +95,14 @@ public class TestPerson {
         Assert.assertEquals(expected, actual);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
     @Test
     public void testConstructorWithAddress() {
         // Given
-        String expectedStreet = "2001 Pennsylvania Avenue";
+        Person person = new Person();
+        String expectedStreet = "1600 Pennsylvania Avenue NW";
 
         // When
-        Person person = new Person(expectedStreet);
+        person.setStreet(expectedStreet);
 
         // Then
         String actual = person.getStreet();
@@ -121,26 +110,66 @@ public class TestPerson {
     }
 
     @Test
-    public void testSetStreet() {
+    public void testSetAddress() {
         // Given
         Person person = new Person();
-        String expected = "2001 Pennsylvania Avenue";
+        String expectedStreet = "1600 Pennsylvania Avenue NW";
+        String expectedTown = "Washington";
+        String expectedState = "DC";
+        String expectedZipcode = "20050";
 
         // When
-        person.setStreet(expected);
-        String actual = person.getStreet();
+        person.setStreet(expectedStreet);
+        person.setTown(expectedTown);
+        person.setState(expectedState);
+        person.setZipcode(expectedZipcode);
 
         // Then
-        Assert.assertEquals(expected, actual);
+        String actualStreet = person.getStreet();
+        String actualTown = person.getTown();
+        String actualState = person.getState();
+        String actualZipcode = person.getZipcode();
+
+        Assert.assertEquals(expectedStreet, actualStreet);
+        Assert.assertEquals(expectedTown, actualTown);
+        Assert.assertEquals(expectedState, actualState);
+        Assert.assertEquals(expectedZipcode, actualZipcode);
+
     }
 
+    @Test
+    public void testConstructorWithCommunication() {
+        // Given
+        String expectedPhone = "(202) 456-1111";
+        String expectedEmail = "president@whitehouse.gov";
 
+        // When
+        Person person = new Person(expectedPhone, expectedEmail);
 
+        // Then
+        String actualPhone = person.getPhone();
+        String actualEmail = person.getEmail();
+        Assert.assertEquals(expectedPhone, actualPhone);
+        Assert.assertEquals(expectedEmail, actualEmail);
+    }
 
+    @Test
+    public void testSetCommunication() {
+        // Given
+        Person person = new Person();
+        String expectedPhone = "(202) 456-1111";
+        String expectedEmail = "president@whitehouse.gov";
 
+        // When
+        person.setPhone(expectedPhone);
+        person.setEmail(expectedEmail);
 
+        String actualPhone = person.getPhone();
+        String actualEmail = person.getEmail();
 
-
-
+        // Then
+        Assert.assertEquals(expectedPhone, actualPhone);
+        Assert.assertEquals(expectedEmail, actualEmail);
+    }
 
 }
