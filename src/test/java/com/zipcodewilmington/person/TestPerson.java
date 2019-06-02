@@ -50,7 +50,6 @@ public class TestPerson {
         Assert.assertEquals(expected, actual);
     }
 
-
     @Test
     public void testConstructorWithNameAndAge() {
         // Given
@@ -95,4 +94,53 @@ public class TestPerson {
         Integer actual = person.getAge();
         Assert.assertEquals(expected, actual);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @Test
+    public void testConstructorWithAddress() {
+        // Given
+        String expectedStreet = "2001 Pennsylvania Avenue";
+
+        // When
+        Person person = new Person(expectedStreet);
+
+        // Then
+        String actual = person.getStreet();
+        Assert.assertEquals(expectedStreet, actual);
+    }
+
+    @Test
+    public void testSetStreet() {
+        // Given
+        Person person = new Person();
+        String expected = "2001 Pennsylvania Avenue";
+
+        // When
+        person.setStreet(expected);
+        String actual = person.getStreet();
+
+        // Then
+        Assert.assertEquals(expected, actual);
+    }
+
+
+
+
+
+
+
+
+
+
 }
